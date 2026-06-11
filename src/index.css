@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #08080f;
+    --bg-secondary: #0e0e1a;
+    --bg-tertiary: #12121f;
+    --indigo: #6366f1;
+    --violet: #818cf8;
+    --purple: #c084fc;
+    --text: #f1f5f9;
+    --muted: #8892a4;
+    --subtle: #3d4663;
+    --card-bg: rgba(255, 255, 255, 0.04);
+    --card-border: rgba(99, 102, 241, 0.18);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--indigo);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--violet);
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(99, 102, 241, 0.3);
+    color: #fff;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/[0.04] border border-indigo-500/[0.18] rounded-2xl backdrop-blur-sm;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .glass-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-4px);
+  }
+
+  .grad-text {
+    background: linear-gradient(135deg, #6366f1, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-primary {
+    @apply px-7 py-3 rounded-xl font-semibold text-white font-inter cursor-pointer transition-all duration-200;
+    background: linear-gradient(135deg, #6366f1, #c084fc);
+  }
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.35);
+  }
+
+  .btn-outline {
+    @apply px-7 py-3 rounded-xl font-semibold cursor-pointer transition-all duration-200 font-inter;
+    background: transparent;
+    color: var(--violet);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+  }
+  .btn-outline:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: var(--violet);
+  }
+
+  .section-label {
+    @apply block font-mono text-xs tracking-widest uppercase mb-3;
+    color: var(--indigo);
+  }
+
+  .section-title {
+    @apply font-syne font-bold mb-4;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    line-height: 1.15;
+  }
+
+  .section-sub {
+    @apply mb-12 leading-relaxed;
+    color: var(--muted);
+    max-width: 560px;
+  }
+
+  .skill-tag {
+    @apply text-xs rounded-md px-2.5 py-1.5 font-mono;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--muted);
+  }
+  .skill-tag.highlight {
+    background: rgba(99, 102, 241, 0.12);
+    border-color: rgba(99, 102, 241, 0.25);
+    color: var(--violet);
+  }
+
+  .tech-badge {
+    @apply text-xs rounded px-2 py-1 font-mono;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    color: var(--violet);
+  }
+
+  .contact-input {
+    @apply w-full rounded-xl px-4 py-3 text-sm outline-none transition-all duration-200 font-inter;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    color: var(--text);
+  }
+  .contact-input:focus {
+    border-color: var(--indigo);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+  .contact-input::placeholder {
+    color: var(--subtle);
+  }
+}
+
+/* Progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, #c084fc);
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* Cursor */
+.custom-cursor {
+  width: 12px;
+  height: 12px;
+  background: #6366f1;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease;
+  mix-blend-mode: difference;
+}
+.custom-cursor.expanded {
+  transform: scale(3);
+  opacity: 0.5;
+}
