@@ -4,6 +4,7 @@ import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { useInView, useCounter } from "../../hooks/usePortfolio";
 import { fadeUp, staggerContainer } from "../../utils/animations";
 import { portfolioData } from "../../data/portfolioData";
+import ResumePDF from "../../images/Madhavi_Garud_Resume.pdf";
 
 function MatrixCanvas() {
   const canvasRef = useRef(null);
@@ -176,7 +177,7 @@ export default function Hero() {
             Hire Me →
           </button>
           <a
-            href="/src/images/Madhavi_Garud_Resume.pdf"
+            href={ResumePDF}
             download
             className="btn-outline"
             style={{
