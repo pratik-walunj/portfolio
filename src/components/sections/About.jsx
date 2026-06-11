@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "../../hooks/usePortfolio";
+import profileImage from "../../images/possport_image.jpeg";
 import {
   fadeUp,
   slideLeft,
@@ -67,7 +68,7 @@ export default function About() {
             }}
           >
             <img
-              src="src/images/possport_image.jpeg"
+              src={profileImage}
               alt="Madhavi Garud"
               className="w-full h-full object-cover"
             />
